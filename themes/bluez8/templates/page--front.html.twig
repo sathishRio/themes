@@ -1,0 +1,244 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.content_top: Items for the content Top region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.bottom: Items for the bottom region.
+ * - page.footer_first: Items for the footer column.
+ * - page.help: Items for the help region.
+ * @see template_preprocess_page()
+ * @see bartik_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div id="wrapper">
+    <!-- socialbar Starts -->
+    {%  if display %}
+        <div id="socialbar">
+            <ul class="social">
+                {%  if facebook  %}<li class="fb"><a href="{{ facebook }}" target="_blank"></a></li> {% endif %}
+                {%  if twitter  %}<li class="tw"><a href="{{ twitter }}" target="_blank"></a></li> {% endif %}
+                {%  if linkedin  %}<li class="ln"><a href="{{ linkedin }}" target="_blank"></a></li> {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    <!-- socialbar Ends -->
+
+    <!-- Header Starts -->
+    <div id="header" class="clearfix">
+        <div id="logo">
+            {{ page.header }}
+        </div>
+        <!-- navigation START -->
+        <div id="navigation" class="clearfix">
+            <div id="main-menu">
+                {{ main_menu_tree }}
+            </div>
+        </div>
+        <!-- navigation Ends -->
+    </div>
+    <!-- Header Ends -->
+
+    <div id="divider_wrapper"><div id="divider"></div></div>
+
+    <!-- Slider Starts -->
+    {%   if slideshow_display %}
+    <div id="slider">
+        <div id ="slide" class="main_view">
+            <div class="slide-area">
+                <div id="divider_wrapper"><div id="divider"></div></div>
+                <div class="slide_image">
+                    {{ slideimage1 }}
+                    {{ slideimage2 }}
+                    {{ slideimage3 }}
+                </div>
+
+                {% if slide1_title or slide1_desc %}
+                <div class="descriptions" style="display: none;">
+                    <div class="desc" >
+                        <div class="desc_top" >{{ slide1_title }}</div>
+                        <div class="desc_bottom" >{{ slide1_desc }}</div>
+                    </div>
+                </div>
+                {% endif %}
+                {%  if slide2_title or slide2_desc %}
+                <div class="descriptions" style="display: none;">
+                    <div class="desc" >
+                        <div class="desc_top">{{ slide2_title  }}</div>
+                        <div class="desc_bottom">{{ slide2_desc }}</div>
+                    </div>
+                </div>
+                {%   endif %}
+                {%  if slide3_title or slide3_desc %}
+                <div class="descriptions" style="display: none;">
+                    <div class="desc">
+                        <div class="desc_top">{{ slide3_title }}</div>
+                        <div class="desc_bottom">{{ slide3_desc }}</div>
+                    </div>
+                </div>
+                {%  endif %}
+            </div>
+            <div class="paging">
+                <a rel="1" href="#"></a>
+                <a rel="2" href="#"></a>
+                <a rel="3" href="#"></a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Slider Ends -->
+
+    <?php print $messages; ?>
+    <div class="clear"></div>
+
+    <!--Three Column Blocks Starts -->
+    {% if col1title is not empty or col1 is not empty %}
+        {% set num1 = 1 %}
+    {% endif %}
+
+    {%  if col2title is not empty or col2 is not empty%}
+        {% set num2 = 1 %}
+    {% endif %}
+
+    {% if col3title is not empty or col3 is not empty %}
+        {% set num3=1 %}
+    {% endif %}
+
+    {% set sum = num1 is defined ~ num2 is defined ~ num3 is defined %}
+    {% set result =sum|length %}
+    {% if result==1 %}
+        {% set value = "one" %}
+    {% endif %}
+
+    {% if result==2 %}
+        {% set value = "two" %}
+    {% endif %}
+
+    {% if result==3 %}
+        {% set value = "three" %}
+    {% endif %}
+
+    {% set value_trail1 = "1" %}
+    {% if result == 1 %}
+        {% set value_trail1 = "last" %}
+    {% endif %}
+
+    {% set value_trail2 = "2" %}
+    {% if result == 2 %}
+        {% set value_trail2 = "last" %}
+    {% endif %}
+
+    {%  set value_trail3 = "3" %}
+    {% if result == 3 %}
+    {% set value_trail3 = "last" %}
+    {% endif %}
+
+    <div id="column-context" class="clearfix {{ value }}">
+        <div id="column-wrapper" class="clearfix {{ value }}">
+            {%  if col1title or col1  %}
+            <div class="column {{ value_trail1 }}">
+                {%  if col1title %}
+                <h2> {{ col1title }}</h2>
+                {% endif %}
+                {% if col1 %}
+                <div class="col-content">{{ col1 | raw }}  </div>
+                {% endif %}
+            </div>
+            {% endif %}
+                {%  if col2title or col2  %}
+                <div class="column {{ value_trail2 }}">
+                    {%  if col2title %}
+                    <h2> {{ col2title }}</h2>
+                    {% endif %}
+                    {% if col2 %}
+                        <div class="col-content">{{ col2 | raw }}  </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {%  if col3title or col3  %}
+            <div class="column {{ value_trail3 }}">
+                {%  if col3title %}
+                <h2> {{ col3title }}</h2>
+                {% endif %}
+                {% if col3 %}
+                    <div class="col-content">{{ col3 | raw }}  </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <!--Three Column Blocks Ends -->
+
+    <!--Welcome Blocks Starts -->
+    {% if wtitle or  wtext %}
+    <div class="welcome_content">
+        {% if wtitle %}
+        <div class="welcometitle"><h2>{{ wtitle }}</h2></div>
+        {% endif %}
+        {%  if wtext %}
+        <div class="welcometext">{{ wtext | raw }}</div>
+        {% endif %}
+    </div>
+    {%  endif %}
+
+    <div class="clear"></div>
+    <!--Welcome Blocks Ends -->
+
+    <div class="clear"></div>
+  <!--Footer context Start -->
+  <div id="footer-context">
+    <!--Footer Start -->
+    <div id="footer-bottom">
+      {{ page.footer }}
+      {% if footer_copyright or footer_developed  %}
+        <div id="copyright">
+          {% if footer_copyright %}
+            {{ 'Copyright' }} &copy; {{ "now"|date("Y") }}  {{ site_name }}
+          {% endif %}
+          {% if footer_developedby  %}
+            <span class="developed">{{ 'Designed & Develop by'}}
+              <a href="{{ footer_developedby_url}} " target="_blank">{{ footer_developedby }}</a>
+                    </span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    <!--Footer Ends -->
+  </div>
+  <!--Footer context Ends -->
+    <div class="clear"></div>
+</div>

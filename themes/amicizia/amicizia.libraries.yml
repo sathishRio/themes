@@ -1,0 +1,15 @@
+global-css:
+  css:
+    theme:
+      css/style.css: {}
+global-js:
+  js:
+    js/custom.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+
+

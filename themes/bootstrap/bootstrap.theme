@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ * The primary PHP file for the Drupal Bootstrap base theme.
+ *
+ * This file should only contain light helper functions and point to stubs in
+ * other files containing more complex functions.
+ *
+ * The stubs should point to files within the `./includes` folder named after
+ * the function itself minus the theme prefix. If the stub contains a group of
+ * functions, then please organize them so they are related in some way and name
+ * the file appropriately to at least hint at what it contains.
+ *
+ * All [pre]process functions, theme functions and template files lives inside
+ * the `./templates` folder. This is a highly automated and complex system
+ * designed to only load the necessary files when a given theme hook is invoked.
+ *
+ * Visit this project's official documentation site, http://drupal-bootstrap.org
+ * or the markdown files inside the `./docs` folder.
+ *
+ * @see _bootstrap_theme()
+ */
+
+/**
+ * Include common functions used through out theme.
+ */
+include_once __DIR__ . '/includes/common.inc';
+
+/**
+ * Declare various hook_*_alter() hooks.
+ *
+ * All hook_*_alter() implementations must live (via include) inside this file
+ * so they are properly detected when drupal_alter() is invoked.
+ */
+bootstrap_include('bootstrap', 'includes/alter.inc');
+
+/**
+ * Include #pre_render callbacks for render array elements.
+ */
+bootstrap_include('bootstrap', 'includes/pre-render.inc');
+
+/**
+ * Include form #process callbacks for form elements.
+ */
+bootstrap_include('bootstrap', 'includes/process.inc');
+
+/**
+ * Implements hook_theme().
+ *
+ * This base-theme's custom theme hook implementations. Never define "path"
+ * or "template" as these are detected and automatically added.
+ *
+ * @see bootstrap_theme_registry_alter()
+ * @see \Drupal\bootstrap\Theme\Registry
+ * @see hook_theme()
+ */
+function bootstrap_theme() {
+  // Bootstrap Carousels.
+  $hooks['bootstrap_carousel'] = array(
+    'variables' => array(
+      'attributes' => array(),
+      'items' => array(),
+      'start_index' => 0,
+      'controls' => TRUE,
+      'indicators' => TRUE,
+      'interval' => 5000,
+      'pause' => 'hover',
+      'wrap' => TRUE,
+    ),
+  );
+
+  // Bootstrap Dropdowns.
+  $hooks['bootstrap_dropdown'] = array(
+    'render element' => 'element',
+  );
+
+  // Bootstrap Modals.
+  $hooks['bootstrap_modal'] = array(
+    'variables' => array(
+      'heading' => '',
+      'body' => '',
+      'footer' => '',
+      'dialog_attributes' => array(),
+      'attributes' => array(),
+      'size' => '',
+      'html_heading' => FALSE,
+    ),
+  );
+
+  // Bootstrap Panels.
+  $hooks['bootstrap_panel'] = array(
+    'render element' => 'element',
+  );
+  return $hooks;
+}
+
+/**
+ * Clear any previously set element_info() static cache.
+ *
+ * If element_info() was invoked before the theme was fully initialized, this
+ * can cause the theme's alter hook to not be invoked.
+ *
+ * @see https://www.drupal.org/node/2351731
+ */
+drupal_static_reset('element_info');

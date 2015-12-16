@@ -1,0 +1,23 @@
+uuid: 6b27673a-2fe0-44d6-8a2b-437f89e109ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_branding
+theme: bluez8
+region: logo
+weight: -7
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

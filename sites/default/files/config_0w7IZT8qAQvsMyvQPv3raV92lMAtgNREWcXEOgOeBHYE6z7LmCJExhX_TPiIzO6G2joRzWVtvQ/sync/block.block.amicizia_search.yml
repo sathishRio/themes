@@ -1,0 +1,20 @@
+uuid: 1ae5a9b5-bed9-47c4-bc08-089840863c95
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - amicizia
+id: amicizia_search
+theme: amicizia
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

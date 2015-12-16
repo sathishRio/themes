@@ -1,0 +1,20 @@
+uuid: f271fc4c-0fc8-46e5-8e1b-27a2ea93384f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - amicizia
+id: amicizia_content
+theme: amicizia
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

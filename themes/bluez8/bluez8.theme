@@ -1,0 +1,146 @@
+<?php
+use Drupal\Core\Extension\ModuleHandler;
+/**
+ * @file
+ * Contains theme override functions and preprocess functions for the theme.
+ */
+
+/**
+ * Implements hook_html_head_alter().
+ */
+function bluez8_html_head_alter(&$head_elements) {
+  $head_elements['system_meta_content_type']['#attributes'] = array(
+    'charset' => 'utf-8',
+  );
+}
+
+/**
+ * Insert themed breadcrumb page navigation at top of the node content.
+ */
+function bluez8_preprocess_breadcrumb(&$variables) {
+  if(($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']){
+  // Adding the a divider of between home an the title of the page.
+    $variables['breadcrumb'][] = array('text' => '»',);
+  // Adding the title of the page in the breadcrumb
+    $variables['breadcrumb'][] = array(
+      'text' => $node->getTitle(),
+      'url' => $node->URL()
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ *
+ * Adds body classes if certain regions have content.
+ */
+function bluez8_preprocess_html(&$variables) {
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-two-sidebars';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-first';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['attributes']['class'][] = 'layout-one-sidebar';
+    $variables['attributes']['class'][] = 'layout-sidebar-second';
+  }
+  else {
+    $variables['attributes']['class'][] = 'layout-no-sidebars';
+  }
+
+  if (!empty($variables['page']['featured_top'])) {
+    $variables['attributes']['class'][] = 'has-featured-top';
+  }
+
+}
+
+/**
+ * Override or insert variables into the page template.
+ */
+function bluez8_preprocess_page(&$vars) {
+  $vars['twitter'] = theme_get_setting('twitter', 'bluez8');
+  $vars['facebook'] = theme_get_setting('facebook', 'bluez8');
+  $vars['linkedin'] = theme_get_setting('linkedin', 'bluez8');
+  $vars['theme_path_social'] = base_path() . drupal_get_path('theme', 'bluez8');
+  $vars['display'] = theme_get_setting('display', 'bluez8');
+  $vars['footer_copyright'] = theme_get_setting('footer_copyright');
+  $vars['footer_developedby'] = theme_get_setting('footer_developedby', 'bluez8');
+  $vars['searchblock'] =Drupal::moduleHandler()->invoke('search', 'block_view');
+  $main_links_source =theme_get_setting('menu_name', 'bluez8');
+  if (Drupal::moduleHandler()->moduleExists('i18n_menu')) {
+    $vars['main_menu_tree'] = i18n_menu_translated_tree($main_link_source);
+  }
+  else {
+    $menu_tree = \Drupal::menuTree();
+    $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($main_links_source);
+    $tree = $menu_tree->load($main_links_source, $parameters);
+    $vars['main_menu_tree'] = $menu_tree->build($tree);
+    $vars['main_menu_tree']['#attributes']['class']=array('menu');
+  }
+    // Frontpage variables.
+    $vars['slideshow_display'] = theme_get_setting('slideshow_display', 'bluez8');
+    $vars['slide1_title'] = theme_get_setting('slide1_title', 'bluez8');
+    $vars['slide2_title'] = theme_get_setting('slide2_title', 'bluez8');
+    $vars['slide3_title'] = theme_get_setting('slide3_title', 'bluez8');
+    $vars['slide1_desc'] = theme_get_setting('slide1_desc', 'bluez8');
+    $vars['slide2_desc'] = theme_get_setting('slide2_desc', 'bluez8');
+    $vars['slide3_desc'] = theme_get_setting('slide3_desc', 'bluez8');
+    $vars['wtitle'] = theme_get_setting('welcome_title', 'bluez8');
+    $vars['wtext'] = theme_get_setting('welcome_text', 'bluez8');
+    $vars['col1'] = theme_get_setting('colone', 'bluez8');
+    $vars['col1title'] = theme_get_setting('colonetitle', 'bluez8');
+    $vars['col2'] = theme_get_setting('coltwo', 'bluez8');
+    $vars['col2title'] = theme_get_setting('coltwotitle', 'bluez8');
+    $vars['col3'] = theme_get_setting('colthree', 'bluez8');
+    $vars['col3title'] = theme_get_setting('colthreetitle', 'bluez8');
+    $vars['img1'] = base_path() . drupal_get_path('theme', 'bluez8') . '/images/slideshow/slide-image-1.jpg';
+    $vars['img2'] = base_path() . drupal_get_path('theme', 'bluez8') . '/images/slideshow/slide-image-2.jpg';
+    $vars['img3'] = base_path() . drupal_get_path('theme', 'bluez8') . '/images/slideshow/slide-image-3.jpg';
+
+    $vars['slideimage1'] = array(
+        '#theme' => 'image',
+        '#uri' => $vars['img1'],
+        '#alt' => $vars['slide1_title'],
+        '#title' => $vars['slide1_title'],
+        '#attributes' => array(
+            'class' => 'slide-img'
+        ),
+    );
+    $vars['slideimage2'] = array(
+        '#theme' => 'image',
+        '#uri' => $vars['img2'],
+        '#alt' => $vars['slide2_title'],
+        '#title' => $vars['slide2_title'],
+        '#attributes' => array(
+            'class' => 'slide-img'
+            ),
+        );
+    $vars['slideimage3'] = array(
+        '#theme' => 'image',
+        '#uri' => $vars['img3'],
+        '#alt' => $vars['slide3_title'],
+        '#title' => $vars['slide3_title'],
+        '#attributes' => array(
+            'class' => 'slide-img'
+            ),
+        );
+
+
+}
+/**
+*
+*Implements hook_preprocess_links()
+*
+*/
+function bluez8_preprocess_links(&$variables){
+
+  // Remove Add New Comment Links
+  unset($variables['links']['comment-add']);
+  if (\Drupal::currentUser()->isAnonymous()) {
+  unset($variables['links']['comment-forbidden']);
+  }
+
+}

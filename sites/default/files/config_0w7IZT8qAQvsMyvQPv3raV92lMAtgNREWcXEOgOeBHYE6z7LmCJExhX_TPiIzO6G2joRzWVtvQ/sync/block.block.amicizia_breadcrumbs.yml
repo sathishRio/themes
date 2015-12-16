@@ -1,0 +1,20 @@
+uuid: 726240b4-a70d-4c4c-8d00-bf6f8578d54c
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - amicizia
+id: amicizia_breadcrumbs
+theme: amicizia
+region: '-1'
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

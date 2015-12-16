@@ -1,0 +1,20 @@
+uuid: 2f8f3ec9-0dbb-4b99-a900-c58912afdfd8
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_breadcrumbs
+theme: bluez8
+region: header
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

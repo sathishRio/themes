@@ -1,0 +1,24 @@
+uuid: 746895c0-d30f-46b9-8e53-8326b4a5a4f5
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_account_menu
+theme: bluez8
+region: '-1'
+weight: -6
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

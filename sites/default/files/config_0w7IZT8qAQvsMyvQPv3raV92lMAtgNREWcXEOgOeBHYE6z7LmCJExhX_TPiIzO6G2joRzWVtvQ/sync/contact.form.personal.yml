@@ -1,0 +1,9 @@
+uuid: c3a2f824-ca9d-4482-921a-2651566e946f
+langcode: en
+status: true
+dependencies: {  }
+id: personal
+label: 'Personal contact form'
+recipients: {  }
+reply: ''
+weight: 0

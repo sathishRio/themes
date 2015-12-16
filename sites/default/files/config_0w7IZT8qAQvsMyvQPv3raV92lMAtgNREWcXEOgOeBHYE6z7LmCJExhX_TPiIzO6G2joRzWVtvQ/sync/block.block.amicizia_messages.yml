@@ -1,0 +1,20 @@
+uuid: f2cb6107-16ab-411c-9905-5c8df3b39620
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - amicizia
+id: amicizia_messages
+theme: amicizia
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 7e108f01-fa6f-41e2-853d-616d973e2e8b
+langcode: en
+status: true
+dependencies:
+  theme:
+    - bluez8
+id: bluez8_local_tasks
+theme: bluez8
+region: content
+weight: -8
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 55e0931f-c7f5-47ca-b300-e24f0d6e38c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - sample_theme
+id: sample_theme_search
+theme: sample_theme
+region: sidebar_first
+weight: -1
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  provider: search
+  label_display: visible
+visibility: {  }

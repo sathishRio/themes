@@ -1,0 +1,238 @@
+<!-- #header -->
+<div id="header">
+  <!-- #header-inside -->
+  <div id="header-inside" class="container_12 clearfix">
+    <!-- #header-inside-left -->
+    <div id="header-inside-left" class="grid_8">
+      {%  if page.navigation %}
+        {{ page.navigation }}
+      {% endif %}
+
+    </div><!-- EOF: #header-inside-left -->
+
+    <!-- #header-inside-right -->
+    <div id="header-inside-right" class="grid_4">
+      {% if page.search_area %}
+        {{ page.search_area }}
+      {% endif %}
+
+    </div><!-- EOF: #header-inside-right -->
+
+  </div><!-- EOF: #header-inside -->
+
+</div><!-- EOF: #header -->
+
+<!-- #header-menu -->
+<div id="header-menu">
+  <!-- #header-menu-inside -->
+  <div id="header-menu-inside" class="container_12 clearfix">
+
+    <div class="grid_12">
+      <div id="navigation" class="clearfix">
+        {{ main_menu_tree }}
+      </div>
+    </div>
+
+  </div><!-- EOF: #header-menu-inside -->
+
+</div><!-- EOF: #header-menu -->
+
+<!-- #banner -->
+<div id="banner">
+  {%   if slideshow_display %}
+  {% if is_front %}
+  <!-- #slideshow -->
+    <div id="slideshow">
+    <!--slider-item-->
+    <div class="slider-item">
+      <div class="content container_12">
+        <div class="grid_12">
+
+          <!--slider-item content-->
+          <div style="float:left; padding:0 30px 0 0;">
+            <img class="masked" src="{{ slideImage1 }}"/>
+          </div>
+          <h2>Sample product name</h2>
+          <strong>General</strong><br/>
+          <em>Client name</em><br/>
+          <br/>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
+          <!--EOF:slider-item content-->
+
+        </div>
+      </div>
+    </div>
+    <!--EOF:slider-item-->
+
+    <!--slider-item-->
+    <div class="slider-item">
+      <div class="content container_12">
+        <div class="grid_12">
+
+          <!--slider-item content-->
+          <div style="float:right; padding:0 0 0 30px;">
+            <img class="masked" src="{{ slideImage2 }}"/>
+          </div>
+          <h2>Sample service name</h2>
+          <strong>General</strong><br/>
+          <em>Client name</em><br/>
+          <br/>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
+          <!--EOF:slider-item content-->
+
+        </div>
+      </div>
+    </div>
+    <!--EOF:slider-item-->
+
+    <!--slider-item-->
+    <div class="slider-item">
+      <div class="content container_12">
+        <div class="grid_12">
+
+          <!--slider-item content-->
+          <h2>Sample product name</h2>
+          <strong>General</strong><br/>
+          <em>Client name</em><br/>
+          <br/>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          <div style="display:block; padding:30px 0 10px 0;"><a class="more" href="#">Tell me more</a></div>
+          <!--EOF:slider-item content-->
+
+        </div>
+      </div>
+    </div>
+    <!--EOF:slider-item-->
+
+    <!--slider-item-->
+    <div class="slider-item">
+      <div class="content container_12">
+        <div class="grid_12">
+
+          <!--slider-item content-->
+          <img class="masked" src="{{ slideImage3}}"/>
+          <!--EOF:slider-item content-->
+        </div>
+      </div>
+    </div>
+    <!--EOF:slider-item-->
+
+  </div>
+  <!-- EOF: #slideshow -->
+
+  <!-- #slider-controls-wrapper -->
+  <div id="slider-controls-wrapper">
+    <div id="slider-controls" class="container_12">
+      <ul id="slider-navigation">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- EOF: #slider-controls-wrapper -->
+
+  {% endif %}
+
+  {% endif %}
+
+</div><!-- EOF: #banner -->
+
+
+<!-- #content -->
+<div id="content">
+  <!-- #content-inside -->
+  <div id="content-inside" class="container_12 clearfix">
+
+    {%  if page.sidebar_first %}
+    <!-- #sidebar-first -->
+    <div id="sidebar-first" class="grid_4">
+      {{ page.sidebar_first }}
+    </div><!-- EOF: #sidebar-first -->
+    {%  endif %}
+    {%  if page.sidebar_first and page.sidebar_second %}
+      <div class="grid_4">
+    {% elseif page.sidebar_first or  page.sidebar_second %}
+      <div id="main" class="grid_8">
+    {% else %}
+        <div id="main" class="grid_12">
+    {% endif %}
+          {% if breadcrumb_display or page.highlighted %}
+          <div id="highlighted">
+            {{ page.highlighted }}
+          </div>
+          {%  endif %}
+          {% if page.help %}
+          <div id="help">
+            {{ page.help }}
+          </div>
+          {%  endif %}
+          {{ page.content }}
+        </div><!-- EOF: #main -->
+
+        {% if page.sidebar_second %}
+        <!-- #sidebar-second -->
+        <div id="sidebar-second" class="grid_4">
+          {{ page.sidebar_second }}
+        </div><!-- EOF: #sidebar-second -->
+        {% endif %}
+
+      </div><!-- EOF: #content-inside -->
+
+    </div><!-- EOF: #content -->
+
+    <!-- #footer -->
+    <div id="footer">
+      <!-- #footer-inside -->
+      <div id="footer-inside" class="container_12 clearfix">
+
+        <div class="footer-area grid_4">
+          {{  page.footer_first }}
+        </div><!-- EOF: .footer-area -->
+
+        <div class="footer-area grid_4">
+          {{ page.footer_second }}
+        </div><!-- EOF: .footer-area -->
+
+        <div class="footer-area grid_4">
+          {{ page.footer_third }}
+        </div><!-- EOF: .footer-area -->
+
+      </div><!-- EOF: #footer-inside -->
+
+    </div><!-- EOF: #footer -->
+
+    <!-- #footer-bottom -->
+    <div id="footer-bottom">
+
+      <!-- #footer-bottom-inside -->
+      <div id="footer-bottom-inside" class="container_12 clearfix">
+        <!-- #footer-bottom-left -->
+        <div id="footer-bottom-left" class="grid_8">
+
+          {{ page.footer }}
+
+        </div>
+        <!-- #footer-bottom-right -->
+        <div id="footer-bottom-right" class="grid_4">
+
+          {{ page.footer_bottom_right }}
+
+        </div><!-- EOF: #footer-bottom-right -->
+
+      </div><!-- EOF: #footer-bottom-inside -->
+
+      {%  if credits_display %}
+      <!-- #credits -->
+      <div id="credits" class="container_12 clearfix">
+        <div class="grid_12">
+          <p>Ported to Drupal by <a href="http://www.drupalizing.com">Drupalizing</a>, a Project of <a href="http://www.morethanthemes.com">More than (just) Themes</a>. Designed by <a href="http://www.kaolti.com/">Zsolt Kacso</a></p>
+        </div>
+      </div>
+      <!-- EOF: #credits -->
+      {%  endif %}
+
+    </div><!-- EOF: #footer -->

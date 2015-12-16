@@ -1,0 +1,156 @@
+<?php
+/**
+ * Return a themed breadcrumb trail.
+ *
+ * @param $breadcrumb
+ *   An array containing the breadcrumb links.
+ * @return
+ *   A string containing the breadcrumb output.
+ */
+function corporateclean_breadcrumb($variables){
+
+  if(($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']){
+    // Adding the a divider of between home an the title of the page.
+      $variables['breadcrumb'][] = array('text' => '»',);
+    // Adding the title of the page in the breadcrumb
+      $variables['breadcrumb'][] = array(
+        'text' => $node->getTitle(),
+        'url' => $node->URL()
+      );
+    }
+}
+
+function corporateclean_page_top($page) {
+
+	if (theme_get_setting('responsive_meta','corporateclean')):
+	$mobileoptimized = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array(
+		'name' =>  'MobileOptimized',
+		'content' =>  'width'
+		)
+	);
+
+	$handheldfriendly = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array(
+		'name' =>  'HandheldFriendly',
+		'content' =>  'true'
+		)
+	);
+
+	$viewport = array(
+		'#type' => 'html_tag',
+		'#tag' => 'meta',
+		'#attributes' => array(
+		'name' =>  'viewport',
+		'content' =>  'width=device-width, initial-scale=1'
+		)
+	);
+
+	drupal_add_html_head($mobileoptimized, 'MobileOptimized');
+	drupal_add_html_head($handheldfriendly, 'HandheldFriendly');
+	drupal_add_html_head($viewport, 'viewport');
+	endif;
+
+}
+
+function corporateclean_preprocess_html(&$variables) {
+
+	if (!theme_get_setting('responsive_respond','corporateclean')):
+	  $variables['#attached']['library'] ='corporateclean/basic-layout';
+	endif;
+    $variables['#attached']['library'] ='corporateclean/ie';
+}
+
+/**
+ * Override or insert variables into the html template.
+
+function corporateclean_process_html(&$vars) {
+	// Hook into color.module
+	if (Drupal::moduleHandler()->moduleExists('color')) {
+	_color_html_alter($vars);
+	}
+
+}
+*/
+/**
+ * Override or insert variables into the page template.
+ */
+function corporateclean_preprocess_page(&$variables) {
+  // Hook into color.module.
+  //if (Drupal::moduleHandler()->moduleExists('color')) {
+    //_color_page_top($variables);
+ // }
+  // Get the menu
+  $main_links_source ='main';
+    if (Drupal::moduleHandler()->moduleExists('i18n_menu')) {
+      $variables['main_menu_tree'] = i18n_menu_translated_tree($main_link_source);
+    }
+    else {
+      $menu_tree = \Drupal::menuTree();
+      $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($main_links_source);
+      $tree = $menu_tree->load($main_links_source, $parameters);
+      $variables['main_menu_tree'] = $menu_tree->build($tree);
+      $variables['main_menu_tree']['#attributes']['class']=array('menu');
+    }
+
+  // Get theme settings
+  $variables['breadcrumb_display']=theme_get_setting('breadcrumb_display','corporateclean');
+  $variables['breadcrumb_home']=theme_get_setting('breadcrumb_home','corporateclean');
+  $variables['breadcrumb_separator']=theme_get_setting('breadcrumb_separator','corporateclean');
+  $variables['slideshow_display']=theme_get_setting('slideshow_display','corporateclean');
+  $variables['slideshow_js']=theme_get_setting('slideshow_js','corporateclean');
+  $variables['slideshow_effect']=theme_get_setting('slideshow_effect','corporateclean');
+  $variables['slideshow_effect_time']=theme_get_setting('slideshow_effect_time','corporateclean');
+  $variables['slideshow_randomize']=theme_get_setting('slideshow_randomize','corporateclean');
+  $variables['slideshow_wrap']=theme_get_setting('slideshow_wrap','corporateclean');
+  $variables['slideshow_pause']=theme_get_setting('slideshow_pause','corporateclean');
+  $variables['responsive_meta']=theme_get_setting('responsive_meta','corporateclean');
+  $variables['responsive_respond']=theme_get_setting('responsive_respond','corporateclean');
+  $variables['credits_display']=theme_get_setting('credits_display','corporateclean');
+
+  // Get slider Image
+  $variables['slideImage1']=drupal_get_path('theme', 'corporateclean')."/mockup/slide-1.jpg";
+  $variables['slideImage2']=drupal_get_path('theme', 'corporateclean')."/mockup/slide-2.jpg";
+  $variables['slideImage3']= drupal_get_path('theme', 'corporateclean')."/mockup/slide-3.jpg";
+
+  /**
+   * Add javascript files for jquery slideshow.
+   */
+  if (theme_get_setting('slideshow_js','corporateclean')):
+
+    $variables['#attached']['library'][] ='corporateclean/jquery-cycle';
+    $variables['#attached']['library'] []='corporateclean/custom';
+  	//Initialize slideshow using theme settings
+  	$effect=theme_get_setting('slideshow_effect','corporateclean');
+  	$effect_time= (int) theme_get_setting('slideshow_effect_time','corporateclean')*1000;
+  	$slideshow_randomize=theme_get_setting('slideshow_randomize','corporateclean');
+  	$slideshow_wrap=theme_get_setting('slideshow_wrap','corporateclean');
+  	$slideshow_pause=theme_get_setting('slideshow_pause','corporateclean');
+    $variables['#attached']['drupalSettings'] = array(
+      'effect' =>$effect,
+      'effect_time' =>$effect_time,
+      'slideshow_randomize'=>$slideshow_randomize,
+      'slideshow_wrap' => $slideshow_wrap,
+      'slideshow_pause' => $slideshow_pause,
+      );
+  endif;
+
+}
+
+function corporateclean_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_block_form') {
+    unset($form['search_block_form']['#title']);
+    $form['search_block_form']['#title_display'] = 'invisible';
+	  $form_default = t('Search');
+    $form['search_block_form']['#default_value'] = $form_default;
+    $form['actions']['submit'] = array('#type' => 'image_button', '#src' => drupal_get_path('theme','corporateclean'). '/images/search-button.png');
+ 	$form['search_block_form']['#attributes'] = array('onblur' => "if (this.value == '') {this.value = '{$form_default}';}", 'onfocus' => "if (this.value == '{$form_default}') {this.value = '';}" );
+  }
+}
+
+
+?>

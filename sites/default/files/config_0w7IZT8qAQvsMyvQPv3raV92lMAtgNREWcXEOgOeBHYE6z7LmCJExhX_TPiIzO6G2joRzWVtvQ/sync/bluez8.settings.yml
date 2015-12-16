@@ -1,0 +1,35 @@
+features:
+  node_user_picture: 1
+  comment_user_picture: 1
+  comment_user_verification: 1
+  favicon: 1
+logo:
+  use_default: 1
+  path: ''
+favicon:
+  use_default: 1
+  path: ''
+breadcrumbs: 1
+slideshow_display: 1
+slide1_title: ''
+slide1_desc: ''
+slide2_title: ''
+slide2_desc: ''
+slide3_title: ''
+slide3_desc: ''
+display: 1
+twitter: 'https://twitter.com/AMICIZIATECH'
+facebook: 'https://www.facebook.com/AmiciziaTechnologySolutions?ref=hl'
+linkedin: 'https://www.linkedin.com/company/3859848?trk=prof-0-ovw-curr_pos'
+welcome_title: ''
+welcome_text: ''
+colonetitle: ''
+colone: ''
+coltwotitle: ''
+coltwo: ''
+colthreetitle: ''
+colthree: ''
+footer_copyright: 1
+footer_developed: 0
+footer_developedby: ATS
+footer_developedby_url: amiciziatech.com

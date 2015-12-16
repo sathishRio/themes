@@ -1,0 +1,24 @@
+uuid: b15ee630-3bdd-48dd-b807-7ef79b3d9b6b
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - amicizia
+id: amicizia_main_menu
+theme: amicizia
+region: '-1'
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

@@ -1,0 +1,20 @@
+uuid: 0ba5f0fc-24f5-4e40-b207-7b3f8aaa4de7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_powered
+theme: bluez8
+region: sidebar_first
+weight: -8
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

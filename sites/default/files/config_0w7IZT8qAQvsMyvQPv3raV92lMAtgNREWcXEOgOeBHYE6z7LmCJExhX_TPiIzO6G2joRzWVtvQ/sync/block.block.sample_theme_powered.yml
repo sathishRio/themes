@@ -1,0 +1,20 @@
+uuid: 620f1104-7eb3-4113-bf3a-58a3c183339c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - sample_theme
+id: sample_theme_powered
+theme: sample_theme
+region: sidebar_first
+weight: 10
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

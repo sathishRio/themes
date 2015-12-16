@@ -1,0 +1,20 @@
+uuid: d3eb5e3b-7b59-41b9-bc00-c077ec5ae615
+langcode: en
+status: true
+dependencies:
+  theme:
+    - amicizia
+id: amicizia_local_tasks
+theme: amicizia
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

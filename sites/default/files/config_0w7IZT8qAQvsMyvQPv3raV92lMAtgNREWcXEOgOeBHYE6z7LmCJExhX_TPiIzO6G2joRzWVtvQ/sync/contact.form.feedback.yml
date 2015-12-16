@@ -1,0 +1,10 @@
+uuid: f2156f47-d790-4867-8004-4ca35f9d99af
+langcode: en
+status: true
+dependencies: {  }
+id: feedback
+label: 'Website feedback'
+recipients:
+  - sathishsam846@gmail.com
+reply: ''
+weight: 0

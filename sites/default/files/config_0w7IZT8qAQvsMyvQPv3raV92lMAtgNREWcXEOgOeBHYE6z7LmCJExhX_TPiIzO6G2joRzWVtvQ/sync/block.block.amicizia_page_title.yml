@@ -1,0 +1,18 @@
+uuid: 173d0ed7-1188-44c9-b401-019bc7592fcb
+langcode: en
+status: true
+dependencies:
+  theme:
+    - amicizia
+id: amicizia_page_title
+theme: amicizia
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

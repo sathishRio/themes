@@ -1,0 +1,38 @@
+name: Bluez
+type: theme
+description: 'A corporate theme with pre-defined configurable slider, blocks and Footer options. Developed by <a href="http://twitter.com/AmiciziaTechnology">Amicizia</a>'
+package: Bluez
+version: VERSION
+core: 8.x
+
+#libraries
+
+libraries:
+  - bluez8/global-css
+  - core/jquery
+  - bluez8/slider-js
+  - bluez8/global-font
+#regions
+
+regions:
+  header: 'Header'
+  content_top: 'Content Top'
+  content: 'Content'
+  sidebar_first: 'Right Sidebar'
+  help: 'Help'
+  bottom: 'Bottom'
+  footer: 'Footer'
+
+#features
+
+features:
+  - logo
+  - name
+  - slogan
+  - node_user_picture
+  - comment_user_picture
+  - comment_user_verification
+  - favicon
+  - main_navigation
+  - secondary_menu
+

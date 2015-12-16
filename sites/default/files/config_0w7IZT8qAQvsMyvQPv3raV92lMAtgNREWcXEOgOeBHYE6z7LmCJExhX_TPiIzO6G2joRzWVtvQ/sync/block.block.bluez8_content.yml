@@ -1,0 +1,20 @@
+uuid: bce91d3f-60ef-4983-ba00-e41762f40ba6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_content
+theme: bluez8
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

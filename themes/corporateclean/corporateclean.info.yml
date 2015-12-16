@@ -1,0 +1,30 @@
+name: Corporate Clean
+type: theme
+description: 'A flexible, recolorable theme with many regions supported. Developed by <a href="http://twitter.com/AmiciziaTechnology">Amicizia</a>'
+package: Corporate Clean
+version: VERSION
+core: 8.x
+
+libraries:
+  - corporateclean/global-css
+  - corporateclean/responsive
+
+# Regions
+
+regions:
+  navigation: Navigation
+  search_area: Search area
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: First sidebar
+  sidebar_second: Second sidebar
+  banner: Banner
+  footer_first: Footer first
+  footer_second: Footer second
+  footer_third: Footer third
+  footer: Footer
+  footer_bottom_right: Footer bottom right
+  help: Help
+  page_top: Page top
+  page_bottom: Page bottom
+

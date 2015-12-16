@@ -1,0 +1,12 @@
+uuid: 2d09a1e7-552a-425e-8e1d-294397d12cca
+name: 'Amicizia Tech'
+mail: sathishsam846@gmail.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en

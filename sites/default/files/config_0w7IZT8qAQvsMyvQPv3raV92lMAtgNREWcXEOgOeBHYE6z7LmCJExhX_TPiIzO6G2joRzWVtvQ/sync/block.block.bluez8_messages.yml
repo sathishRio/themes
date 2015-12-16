@@ -1,0 +1,20 @@
+uuid: 4bcbe37f-88ec-49a3-b614-20f828d38cc2
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - bluez8
+id: bluez8_messages
+theme: bluez8
+region: '-1'
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -1,0 +1,24 @@
+footer_copyright: '1'
+footer_developedby: 'Amicizia'
+footer_developedby_url: 'https://twitter.com/AMICIZIATECH'
+slideshow_display: '1'
+display: '1'
+breadcrumbs: '1'
+slide1_title: 'Solution that you need'
+slide1_desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+slide2_title: "Be successful it's easy"
+slide2_desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+slide3_title: 'We work for your profit'
+slide3_desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+twitter: 'https://twitter.com/AMICIZIATECH'
+facebook: 'https://www.facebook.com/AmiciziaTechnologySolutions?ref=hl'
+linkedin: 'https://www.linkedin.com/company/3859848?trk=prof-0-ovw-curr_pos'
+welcome_title: 'Welcome to Bluez'
+welcome_text: '<blockquote>In vel lorem et odio dictum dapibus. Vestibulum vitae sapien id mauris sollicitudin gravida. Vivamus nec risus nec turpis elementum molestie. Duis viverra pretium sapien.</blockquote>'
+colonetitle: "This is column One"
+colone: '<div class="image_wrapper"><img src="themes/bluez8/images/promoted/col1.jpg"></div>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing</a> elit. Fusce vel iaculis felis. Nulla nec turpis neque. In vel lorem et odio dictum dapibus. Vestibulum vitae sapien id mauris sollicitudin gravida. Vivamus nec risus nec turpis elementum molestie. Duis viverra pretium sapien.'
+coltwotitle: "This is column Two"
+coltwo: '<div class="image_wrapper"><img src="themes/bluez8/images/promoted/col2.jpg"></div>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing</a> elit. Fusce vel iaculis felis. Nulla nec turpis neque. In vel lorem et odio dictum dapibus. Vestibulum vitae sapien id mauris sollicitudin gravida. Vivamus nec risus nec turpis elementum molestie. Duis viverra pretium sapien.'
+colthreetitle: "This is column Three"
+colthree: '<div class="image_wrapper"><img src="themes/bluez8/images/promoted/col3.jpg"></div>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing</a> elit. Fusce vel iaculis felis. Nulla nec turpis neque. In vel lorem et odio dictum dapibus. Vestibulum vitae sapien id mauris sollicitudin gravida. Vivamus nec risus nec turpis elementum molestie. Duis viverra pretium sapien.'
+menu_name: 'main'

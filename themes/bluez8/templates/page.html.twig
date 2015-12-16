@@ -1,0 +1,123 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template normally located in the
+ * core/modules/system directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ * - logo: The url of the logo image, as defined in theme settings.
+ * - site_name: The name of the site. This is empty when displaying the site
+ *   name has been disabled in the theme settings.
+ * - site_slogan: The slogan of the site. This is empty when displaying the site
+ *   slogan has been disabled in theme settings.
+
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.content_top: Items for the content Top region.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.bottom: Items for the bottom region.
+ * - page.footer_first: Items for the footer column.
+ * - page.help: Items for the help region.
+ * @see template_preprocess_page()
+ * @see bartik_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+{{ tabs }}
+<div id="wrapper">
+    <!-- socialbar Starts -->
+    {%  if display %}
+        <div id="socialbar">
+            <ul class="social">
+                {%  if facebook  %}<li class="fb"><a href="{{ facebook }}" target="_blank"></a></li> {% endif %}
+                {%  if twitter  %}<li class="tw"><a href="{{ twitter }}" target="_blank"></a></li> {% endif %}
+                {%  if linkedin  %}<li class="ln"><a href="{{ linkedin }}" target="_blank"></a></li> {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    <!-- socialbar Ends -->
+
+    <!-- Header Starts -->
+    <div id="header" class="clearfix">
+      <div id="logo">
+          {{ page.header }}
+      </div>
+        <!-- navigation START -->
+      <div id="navigation" class="clearfix">
+        <div id="main-menu">
+          {{ main_menu_tree }}
+        </div>
+      </div>
+        <!-- navigation Ends -->
+    </div>
+    <!-- Header Ends -->
+
+    <div id="divider_wrapper"><div id="divider"></div></div>
+
+    <div id="extra">
+      {{ page.content_top }}
+    </div>
+    <div class="clear"></div>
+
+    <div id="main">
+        <div id="post-content">
+            {{ title_prefix }}
+            {% if title %}<h1 class="page-title">{{ title }}</h1>{% endif %}
+            {{ title_suffix }}
+            {% if tabs.primary is not empty %}<div class="tabs-wrapper clearfix">{{ tabs }}</div>{% endif %}
+            {{ page.help }}
+            {% if action_links %}<ul class="action-links">{{ action_links }})</ul>{% endif %}
+            {{ page.content }}
+        </div> <!-- /#main -->
+        {% if page.sidebar_first %}
+            <div id="sidebar" class="sidebar clearfix">
+                {{ page.sidebar_first }}
+            </div>  <!-- /#sidebar-first -->
+        {% endif %}
+    </div>
+    <div class="clear"></div>
+    <!--Footer context Start -->
+    <div id="footer-context">
+        <!--Footer Start -->
+        <div id="footer-bottom">
+            {{ page.footer }}
+            {% if footer_copyright or footer_developed  %}
+                <div id="copyright">
+                    {% if footer_copyright %}
+                        {{ 'Copyright' }} &copy; {{ "now"|date("Y") }}  {{ site_name }}
+                    {% endif %}
+                    {% if footer_developedby  %}
+                        <span class="developed">{{ 'Designed & Develop by'}}
+                            <a href="{{ footer_developedby_url}} " target="_blank">{{ footer_developedby }}</a>
+                    </span>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <!--Footer Ends -->
+    </div>
+    <!--Footer context Ends -->
+    <div class="clear"></div>
+</div>
