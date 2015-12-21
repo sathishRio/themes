@@ -125,4 +125,4 @@ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0093c5', end
 ul.links li a:hover, a.more:hover, #comments ul.links li a:hover,
 input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover { background: #008ab8; }
 
-.region-sidebar-first .block .content, .region-sidebar-second .block .content { background:#fdfdfd; }
+#sidebar-first .block .content, #sidebar-second .block .content { background:#fdfdfd; }

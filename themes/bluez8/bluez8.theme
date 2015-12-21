@@ -1,9 +1,4 @@
 <?php
-use Drupal\Core\Extension\ModuleHandler;
-/**
- * @file
- * Contains theme override functions and preprocess functions for the theme.
- */
 
 /**
  * Implements hook_html_head_alter().
